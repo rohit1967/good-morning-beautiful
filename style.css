@@ -107,23 +107,32 @@ h2{
 
 #giftBox{
     position:fixed;
-    inset:0;
+    top:0;
+    left:0;
+    width:100%;
+    height:100vh;
+
     display:none;
-    justify-content:flex-start;
-    align-items:center;
+
     overflow-y:auto;
-    padding:80px 20px 40px;
+    overflow-x:hidden;
+
+    justify-content:flex-start;
+    align-items:flex-start;
+
+    padding:40px 20px 60px;
+
     background:linear-gradient(135deg,#ff9a9e,#fad0c4);
+
     z-index:9999;
 }
-
 .giftContent{
     width:min(95%,700px);
-    margin:auto;
-    padding:35px;
-    border-radius:25px;
+    margin:40px auto;
+    padding:30px;
     background:rgba(255,255,255,.18);
     backdrop-filter:blur(12px);
+    border-radius:25px;
     box-shadow:0 15px 40px rgba(0,0,0,.2);
 }
 

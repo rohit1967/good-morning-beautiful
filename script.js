@@ -243,7 +243,14 @@ giftBtn.addEventListener("click", () => {
 
     game.style.display = "none";
 
-    giftBox.style.display = "flex";
+   giftBox.style.display = "flex";
+
+giftBox.scrollTop = 0;
+
+window.scrollTo({
+    top: 0,
+    behavior: "instant"
+});
 
     giftBox.scrollTop = 0;
 
