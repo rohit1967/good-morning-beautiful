@@ -193,15 +193,19 @@ function burst(x,y){
 
 giftBtn.addEventListener("click",()=>{
 
-    game.style.display="none";
-
-    giftBox.style.display="flex";
-
     if(bgMusic){
 
-        bgMusic.volume=0.5;
+        bgMusic.volume = 0.4;
+
+        bgMusic.play().catch(err => console.log(err));
 
     }
+
+    game.style.display = "none";
+
+    giftBox.style.display = "flex";
+
+
 
 });
 
