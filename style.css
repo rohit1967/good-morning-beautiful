@@ -194,25 +194,24 @@ position:fixed;
 top:0;
 left:0;
 
-width:100%;
-height:100%;
+width:100vw;
+height:100vh;
 
 display:none;
 
-justify-content:center;
-align-items:center;
-flex-direction:column;
+overflow-y:auto;
+overflow-x:hidden;
 
-padding:25px;
+justify-content:flex-start;
+align-items:center;
+
+padding:30px 15px;
 
 background:linear-gradient(135deg,#ff9a9e,#fad0c4);
 
 z-index:9999;
 
-animation:fadeIn .6s ease;
-
 }
-
 @keyframes fadeIn{
 
 from{
@@ -233,7 +232,7 @@ transform:scale(1);
 
 .giftContent{
 
-width:min(92%,700px);
+width:min(95%,700px);
 
 margin:20px auto;
 
@@ -243,9 +242,9 @@ border-radius:25px;
 
 background:rgba(255,255,255,.18);
 
-backdrop-filter:blur(10px);
+backdrop-filter:blur(12px);
 
-box-shadow:0 15px 40px rgba(0,0,0,.2);
+box-shadow:0 10px 30px rgba(0,0,0,.2);
 
 }
 
