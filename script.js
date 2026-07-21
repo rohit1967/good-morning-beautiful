@@ -24,18 +24,19 @@ let gameOver = false;
 
 function startMusic() {
 
-    if (!bgMusic) return;
+    console.log("Trying to play...");
 
     bgMusic.volume = 0.4;
 
-    bgMusic.play().catch(err => {
-
-        console.log("Music Error:", err);
-
-    });
+    bgMusic.play()
+        .then(() => {
+            console.log("✅ Music started");
+        })
+        .catch(err => {
+            console.error("❌ Music failed:", err);
+        });
 
 }
-
 document.addEventListener("pointerdown", startMusic, {
     once: true
 });
