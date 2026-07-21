@@ -22,19 +22,25 @@ let gameOver = false;
 // Music
 // ================================
 
+let musicStarted = false;
+
 function startMusic() {
 
-    if (!bgMusic) return;
+    if (!bgMusic || musicStarted) return;
+
+    musicStarted = true;
 
     bgMusic.volume = 0.4;
 
-    bgMusic.play().catch(() => {});
+    bgMusic.play().catch(() => {
+
+        musicStarted = false;
+
+    });
 
 }
 
-document.body.addEventListener("pointerdown", startMusic, {
-    once: true
-});
+
 
 // Manual Play Button
 
@@ -106,11 +112,13 @@ function createHeart() {
 
     function collectHeart() {
 
-        if (gameOver) return;
+    startMusic();   // <-- ADD THIS LINE
 
-        score++;
+    if (gameOver) return;
 
-        scoreText.textContent = score;
+    score++;
+
+    scoreText.textContent = score;
 
         burst(
 
