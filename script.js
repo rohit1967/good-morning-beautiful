@@ -22,25 +22,38 @@ let gameOver = false;
 // Music
 // ================================
 
+let musicStarted = false;
+
 function startMusic() {
 
-    console.log("Trying to play...");
+    if (musicStarted) return;
+
+    musicStarted = true;
 
     bgMusic.volume = 0.4;
 
-    bgMusic.play()
-        .then(() => {
-            console.log("✅ Music started");
-        })
-        .catch(err => {
-            console.error("❌ Music failed:", err);
+    bgMusic.currentTime = 0;
+
+    bgMusic.muted = false;
+
+    const playPromise = bgMusic.play();
+
+    if (playPromise !== undefined) {
+
+        playPromise.catch((err) => {
+
+            console.log("Music Error:", err);
+
+            musicStarted = false;
+
         });
 
-}
-document.addEventListener("pointerdown", startMusic, {
-    once: true
-});
+    }
 
+}
+
+document.body.addEventListener("click", startMusic, { once: true });
+document.body.addEventListener("touchstart", startMusic, { once: true });
 
 
 
