@@ -22,23 +22,24 @@ let gameOver = false;
 // Music
 // ================================
 
-let musicStarted = false;
-
 function startMusic() {
 
-    if (!bgMusic || musicStarted) return;
-
-    musicStarted = true;
+    if (!bgMusic) return;
 
     bgMusic.volume = 0.4;
 
-    bgMusic.play().catch(() => {
+    bgMusic.play().catch(err => {
 
-        musicStarted = false;
+        console.log("Music Error:", err);
 
     });
 
 }
+
+document.addEventListener("pointerdown", startMusic, {
+    once: true
+});
+
 
 
 
