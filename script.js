@@ -10,17 +10,25 @@ let score = 0;
 let gameOver = false;
 
 // Background Music
+function startMusic(){
 
-function startMusic() {
+    bgMusic.volume = 0.4;
 
-    if (!bgMusic) return;
+    bgMusic.currentTime = 0;
 
-    bgMusic.volume = 0.3;
+    bgMusic.play().then(()=>{
 
-    bgMusic.play().catch(() => {});
+        console.log("Music Playing");
+
+    }).catch(err=>{
+
+        console.log(err);
+
+    });
 
 }
 
+document.addEventListener("pointerdown", startMusic, { once: true });
 document.addEventListener(
     "pointerdown",
     startMusic,
