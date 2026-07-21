@@ -7,12 +7,16 @@ font-family:'Poppins',sans-serif;
 
 body{
 
-height:100vh;
-overflow:hidden;
+min-height:100vh;
+
+overflow-x:hidden;
+overflow-y:auto;
 
 display:flex;
 justify-content:center;
 align-items:center;
+
+padding:20px;
 
 background:linear-gradient(180deg,#06142f,#133b73,#ff9a9e);
 
@@ -20,13 +24,14 @@ color:white;
 
 }
 
-/* Game */
-
 #game{
+
+width:100%;
+max-width:950px;
 
 text-align:center;
 
-width:100%;
+margin:auto;
 
 }
 
@@ -34,9 +39,9 @@ h1{
 
 font-size:55px;
 
-text-shadow:0 0 25px hotpink;
+margin-bottom:15px;
 
-margin-bottom:10px;
+text-shadow:0 0 20px hotpink;
 
 }
 
@@ -44,7 +49,7 @@ p{
 
 font-size:22px;
 
-margin-bottom:10px;
+margin-bottom:15px;
 
 }
 
@@ -58,9 +63,13 @@ margin-bottom:20px;
 
 position:relative;
 
-width:900px;
+width:min(900px,95vw);
 
-height:500px;
+height:65vh;
+
+min-height:420px;
+
+max-height:600px;
 
 margin:auto;
 
@@ -68,14 +77,13 @@ overflow:hidden;
 
 border-radius:20px;
 
-border:3px solid rgba(255,255,255,.3);
+border:3px solid rgba(255,255,255,.25);
 
 background:rgba(255,255,255,.08);
 
 backdrop-filter:blur(12px);
 
 }
-
 /* Stars */
 
 #playArea::before{
@@ -84,11 +92,13 @@ content:"";
 
 position:absolute;
 
+top:0;
+left:0;
+
 width:100%;
 height:100%;
 
 background-image:
-
 radial-gradient(white 1px,transparent 1px);
 
 background-size:40px 40px;
@@ -97,14 +107,22 @@ opacity:.4;
 
 animation:twinkle 3s infinite;
 
+pointer-events:none;
+
 }
 
 @keyframes twinkle{
 
+0%{
+opacity:.4;
+}
+
 50%{
+opacity:.15;
+}
 
-opacity:.1;
-
+100%{
+opacity:.4;
 }
 
 }
@@ -121,13 +139,21 @@ font-size:42px;
 
 cursor:pointer;
 
-animation:fall linear forwards;
-
 user-select:none;
+
+animation:fall linear forwards;
 
 filter:drop-shadow(0 0 15px crimson);
 
 z-index:100;
+
+transition:transform .2s;
+
+}
+
+.heart:hover{
+
+transform:scale(1.2);
 
 }
 
@@ -143,7 +169,7 @@ transform:scale(.8);
 
 100%{
 
-top:540px;
+top:105%;
 
 transform:scale(1.3);
 
@@ -151,7 +177,7 @@ transform:scale(1.3);
 
 }
 
-/* Button */
+/* Gift Button */
 
 #giftBtn{
 
@@ -162,6 +188,8 @@ margin-top:25px;
 padding:16px 45px;
 
 font-size:22px;
+
+font-weight:600;
 
 border:none;
 
@@ -183,8 +211,9 @@ transition:.3s;
 
 transform:scale(1.08);
 
-}
+box-shadow:0 0 35px hotpink;
 
+}
 /* Gift Screen */
 
 #giftBox{
@@ -201,50 +230,90 @@ display:none;
 
 justify-content:center;
 align-items:center;
+flex-direction:column;
+
+padding:25px;
 
 background:linear-gradient(135deg,#ff9a9e,#fad0c4);
 
 z-index:9999;
 
+animation:fadeIn .6s ease;
+
+}
+
+@keyframes fadeIn{
+
+from{
+
+opacity:0;
+transform:scale(.9);
+
+}
+
+to{
+
+opacity:1;
+transform:scale(1);
+
+}
+
 }
 
 .giftContent{
 
-text-align:center;
-
+width:100%;
 max-width:700px;
 
-padding:40px;
+background:rgba(255,255,255,.18);
+
+backdrop-filter:blur(12px);
+
+border-radius:25px;
+
+padding:40px 30px;
+
+text-align:center;
+
+box-shadow:0 0 35px rgba(0,0,0,.2);
 
 }
 
 .giftContent h1{
 
-font-size:60px;
+font-size:55px;
 
-margin-bottom:30px;
+margin-bottom:20px;
+
+color:white;
+
+text-shadow:0 0 20px hotpink;
 
 }
 
 .giftContent p{
 
-font-size:28px;
+font-size:26px;
 
 line-height:1.8;
 
-margin-bottom:40px;
+margin-bottom:35px;
+
+color:white;
 
 }
 
 #restart{
 
-padding:18px 45px;
+padding:16px 45px;
 
 font-size:22px;
 
+font-weight:bold;
+
 border:none;
 
-border-radius:40px;
+border-radius:50px;
 
 cursor:pointer;
 
@@ -252,9 +321,9 @@ background:white;
 
 color:#ff4f81;
 
-font-weight:bold;
-
 transition:.3s;
+
+box-shadow:0 0 20px rgba(255,255,255,.5);
 
 }
 
@@ -262,17 +331,19 @@ transition:.3s;
 
 transform:scale(1.08);
 
+box-shadow:0 0 30px white;
+
 }
 
 /* Mobile */
 
-@media(max-width:950px){
+@media (max-width:950px){
 
-#playArea{
+body{
 
-width:95vw;
+padding:15px;
 
-height:65vh;
+align-items:flex-start;
 
 }
 
@@ -291,6 +362,66 @@ font-size:18px;
 h2{
 
 font-size:22px;
+
+margin-bottom:15px;
+
+}
+
+#playArea{
+
+width:95vw;
+
+height:60vh;
+
+min-height:350px;
+
+}
+
+.heart{
+
+font-size:36px;
+
+}
+
+#giftBtn{
+
+width:90%;
+
+max-width:320px;
+
+font-size:20px;
+
+padding:15px;
+
+}
+
+.giftContent{
+
+padding:25px 20px;
+
+}
+
+.giftContent h1{
+
+font-size:36px;
+
+}
+
+.giftContent p{
+
+font-size:20px;
+
+line-height:1.6;
+
+}
+
+#restart{
+
+width:100%;
+
+font-size:20px;
+
+padding:15px;
 
 }
 
